@@ -1,0 +1,17 @@
+# Git
+.git
+.gitignore
+
+# Docker
+.dockerignore
+Dockerfile
+
+# Dependencies
+node_modules
+server/node_modules
+
+# Build artifacts
+dist
+
+# Environment variables
+.env
