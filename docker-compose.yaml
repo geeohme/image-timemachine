@@ -1,0 +1,16 @@
+services:
+  timetravelphoto:
+    build: .
+    container_name: timetravelphoto
+    restart: unless-stopped
+    networks:
+      - searxng
+    ports: 
+      - "7091:7091"
+    env_file:
+      - .env
+
+networks:
+  searxng:
+    external: true
+    name: searxng-docker_searxng
