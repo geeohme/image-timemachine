@@ -1,0 +1,14 @@
+{
+  "name": "gemini-time-machine-server",
+  "version": "1.0.0",
+  "description": "Backend for Gemini Image Time Machine",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "@google/genai": "^1.26.0",
+    "express": "^4.19.2"
+  }
+}

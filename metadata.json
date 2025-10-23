@@ -1,0 +1,5 @@
+{
+  "name": "Gemini Image Time Machine",
+  "description": "An application that uses Gemini to analyze, edit, and transform user-uploaded photos into historical scenes, acting as a 'time-travel' photo booth.",
+  "requestFramePermissions": []
+}
