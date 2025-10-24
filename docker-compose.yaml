@@ -7,6 +7,10 @@ services:
       - searxng
     ports: 
       - "7091:7091"
+    environment:
+      - PORT=7091  # Tell Express to listen on 7091
+      - GEMINI_API_KEY=$GEMINI_API_KEY
+      - API_KEY=$GEMINI_API_KEY
     env_file:
       - .env
 
