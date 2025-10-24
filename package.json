@@ -7,6 +7,10 @@
     "build": "esbuild index.tsx --bundle --outfile=dist/bundle.js --loader:.tsx=tsx --define:process.env.NODE_ENV='\"production\"' && cp index.html dist/index.html",
     "start": "node server/server.js"
   },
+    "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
   "devDependencies": {
     "esbuild": "^0.20.2"
   }
