@@ -1,26 +1,26 @@
 # Stage 1: Build the frontend assets
-FROM node:20-slim AS builder
+FROM node:20 AS builder
+
+#Create app directory
 WORKDIR /app
 
-# Install build dependencies
-COPY package.json ./
-RUN npm install
+# Clone the project from GitHub (public repo)
+RUN git clone https://github.com/geeohme/image-timemachine .
 
-# Copy all source files
-# Note: Ensure .dockerignore is set up to exclude node_modules etc.
-COPY . .
+# Install build dependencies
+RUN npm install
 
 # Build the application frontend
 RUN npm run build
 
 
 # Stage 2: Setup the production server
-FROM node:20-slim AS production
+FROM node:20 AS production
 WORKDIR /app
 ENV NODE_ENV=production
 
 # Copy server dependencies manifest
-COPY server/package.json ./server/
+COPY --from=builder /app/server/package.json ./server/
 WORKDIR /app/server
 
 # Install production dependencies for the server
@@ -28,7 +28,7 @@ RUN npm install --omit=dev
 
 # Go back to the root and copy the server code
 WORKDIR /app
-COPY server/server.js ./server/
+COPY --from=builder /app/server/server.js ./server/
 
 # Copy the built frontend from the builder stage
 COPY --from=builder /app/dist ./dist
